@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve a Table | Pyrites Grill</title>
+  <meta name="description" content="Book a dining table at Pyrites Grill online with real-time table availability check and instant reservation reference.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/>
+        </svg>
+        <span>PYRITES GRILL</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="book.html" class="nav-link active">Book a Table</a></li>
+        <li><a href="my-booking.html" class="nav-link">Find Booking</a></li>
+      </ul>
+      <a href="book.html" class="btn btn-primary">Book a Table</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <section class="section">
+      <div class="section-header">
+        <span class="section-subtitle">ONLINE RESERVATION</span>
+        <h1 class="section-title">Reserve Your Dining Experience</h1>
+        <p class="section-description">
+          Select your preferred date, time, and party size. Each reservation includes a 90-minute dining duration.
+        </p>
+      </div>
+
+      <!-- Alert Container -->
+      <div id="booking-alert" style="max-width: 800px; margin: 0 auto 1.5rem;"></div>
+
+      <!-- Booking Form Container -->
+      <div id="booking-form-wrapper" class="booking-container">
+        <form id="booking-form">
+          <div class="form-grid">
+            
+            <!-- Guest Name -->
+            <div class="form-group">
+              <label class="form-label" for="customer_name">Full Name *</label>
+              <input type="text" id="customer_name" class="form-input" placeholder="e.g. John Doe" required>
+            </div>
+
+            <!-- Email Address -->
+            <div class="form-group">
+              <label class="form-label" for="customer_email">Email Address *</label>
+              <input type="email" id="customer_email" class="form-input" placeholder="john@example.com" required>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+              <label class="form-label" for="customer_phone">Phone Number *</label>
+              <input type="tel" id="customer_phone" class="form-input" placeholder="+91 98765 43210" required>
+            </div>
+
+            <!-- Guest Count -->
+            <div class="form-group">
+              <label class="form-label" for="guest_count">Party Size (Guests) *</label>
+              <select id="guest_count" class="form-select" required>
+                <option value="1">1 Guest (Solo)</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests (VIP / Large Alcove)</option>
+              </select>
+            </div>
+
+            <!-- Booking Date -->
+            <div class="form-group">
+              <label class="form-label" for="booking_date">Reservation Date *</label>
+              <input type="date" id="booking_date" class="form-input" required>
+            </div>
+
+            <!-- Booking Time Slot -->
+            <div class="form-group">
+              <label class="form-label" for="booking_time">Time Slot *</label>
+              <select id="booking_time" class="form-select" required>
+                <option value="12:00">12:00 PM (Lunch)</option>
+                <option value="13:00">01:00 PM (Lunch)</option>
+                <option value="14:00">02:00 PM (Lunch)</option>
+                <option value="18:00">06:00 PM (Dinner)</option>
+                <option value="19:00" selected>07:00 PM (Dinner Prime)</option>
+                <option value="20:00">08:00 PM (Dinner Prime)</option>
+                <option value="21:00">09:00 PM (Late Seating)</option>
+              </select>
+            </div>
+
+            <!-- Special Requests -->
+            <div class="form-group full-width">
+              <label class="form-label" for="special_requests">Special Requests (Optional)</label>
+              <textarea id="special_requests" class="form-textarea" placeholder="Dietary restrictions, anniversary celebrations, preferred zone (Patio, Alcove)..."></textarea>
+            </div>
+
+            <!-- Availability Action Button -->
+            <div class="form-group full-width" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+              <button type="button" id="btn-check-availability" class="btn btn-secondary" style="flex: 1;">
+                Check Availability
+              </button>
+              <button type="submit" id="btn-submit-booking" class="btn btn-primary" style="flex: 2;">
+                Confirm Reservation
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- Result Confirmation Container (Hidden initially) -->
+      <div id="booking-result-wrapper" style="display: none; max-width: 800px; margin: 0 auto;">
+        <!-- Rendered by app.js -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <h3 class="footer-title">Pyrites Grill</h3>
+        <p class="footer-text">Elevated charcoal grilling and steakhouse dining experience.</p>
+      </div>
+      <div>
+        <h3 class="footer-title">Quick Links</h3>
+        <p class="footer-text"><a href="index.html">Home</a></p>
+        <p class="footer-text"><a href="menu.html">Menu</a></p>
+        <p class="footer-text"><a href="book.html">Book a Table</a></p>
+        <p class="footer-text"><a href="my-booking.html">Find Booking</a></p>
+      </div>
+      <div>
+        <h3 class="footer-title">Contact Us</h3>
+        <p class="footer-text">742 Ember Ridge Boulevard</p>
+        <p class="footer-text">Phone: +91 98765 43210</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Pyrites Grill Restaurant. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
