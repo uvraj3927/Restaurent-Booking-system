@@ -16,7 +16,15 @@ def create_app():
     app.config.from_object(Config)
 
     # Enable CORS for all REST API endpoints
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"/api/*": {"origins": [
+        "http://restaurant-booking-frontend-868ca2b4.s3-website-us-east-1.amazonaws.com",
+        "http://44.200.253.83:5000",
+        "http://localhost:5000",
+        "http://127.0.0.1:5000"
+    ]}},
+    supports_credentials=True,
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"])
 
     # Initialize extensions
     db.init_app(app)
