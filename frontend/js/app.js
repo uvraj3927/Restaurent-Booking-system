@@ -2,7 +2,12 @@
  * Pyrites Grill Main Application JavaScript
  * Handles REST API fetch requests, UI state, rendering, and validation.
  */
+const API_BASE = "http://44.200.253.83:5000";
 
+async function loadRestaurants() {
+  const res = await fetch(`${API_BASE}/api/restaurants`);
+  return res.json();
+}
 // Generic API Client helper
 async function apiFetch(endpoint, options = {}) {
   const url = `${CONFIG.API_BASE_URL}${endpoint}`;
