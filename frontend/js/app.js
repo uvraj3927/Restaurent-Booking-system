@@ -34,7 +34,7 @@ async function apiFetch(endpoint, options = {}) {
 }
 // Generic API Client helper
 async function apiFetch(endpoint, options = {}) {
-  const url = `${CONFIG.API_BASE_URL}${endpoint}`;
+  const url = `${CONFIG.API_BASE}${endpoint}`;
   const defaultHeaders = {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
