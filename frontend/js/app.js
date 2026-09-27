@@ -4,9 +4,33 @@
  */
 const API_BASE = "http://44.200.253.83:5000";
 
-async function loadRestaurants() {
-  const res = await fetch(`${API_BASE}/api/restaurants`);
-  return res.json();
+async function apiFetch(endpoint, options = {}) {
+  const url = `${API_BASE}${endpoint}`;
+  const defaultHeaders = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  };
+
+  options.headers = { ...defaultHeaders, ...options.headers };
+
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+
+    if (!response.ok) {
+      const errorMsg = data.error || data.message || `Request failed with status ${response.status}`;
+      return { success: false, status: response.status, error: errorMsg, data };
+    }
+
+    return { success: true, status: response.status, data };
+  } catch (err) {
+    console.error(`API Fetch Error on ${endpoint}:`, err);
+    return {
+      success: false,
+      status: 0,
+      error: 'Unable to connect to Pyrites Grill API server. Please ensure backend is running.'
+    };
+  }
 }
 // Generic API Client helper
 async function apiFetch(endpoint, options = {}) {
