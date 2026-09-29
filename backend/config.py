@@ -5,8 +5,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SECRET_KEY = os.getenv('SECRET_KEY', 'pyrites-grill-default-dev-key')
-    ADMIN_API_KEY = os.getenv('ADMIN_API_KEY', 'pg-admin-secret-key-123')
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    ADMIN_API_KEY = os.getenv('ADMIN_API_KEY')
     
     # Handle DB URL format compatibility (mysql:// -> mysql+pymysql://)
     db_url = os.getenv('DATABASE_URL', 'sqlite:///pyrites_grill.db')

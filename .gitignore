@@ -1,0 +1,40 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite
+*.sqlite3
+instance/
+.venv/
+venv/
+
+# Terraform local data and secrets
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+*.tfplan
+crash.log
+crash.*.log
+
+# Common local build and editor files
+node_modules/
+dist/
+build/
+coverage/
+.pytest_cache/
+.idea/
+.vscode/
+.DS_Store
